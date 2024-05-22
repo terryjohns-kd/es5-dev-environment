@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speed Simulation</title>
+<style>
+    #viewport {
+        overflow: hidden;
+        width: 100vw; /* Viewport width */
+        height: 100vh; /* Viewport height */
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #roadImage {
+        max-width: none;
+        position: absolute;
+        width: auto;
+        height: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform 0.2s ease-out; /* Smooth transition for zoom effect */
+    }
+
+    #speedSlider {
+        position: absolute;
+        width: 80%;
+        bottom: 20px; /* Position slider at the bottom of the viewport */
+        z-index: 10;
+    }
+</style>
+</head>
+<body>
+
+<div id="viewport">
+    <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,h_1200,q_75,w_1200/v1/clients/annapolis/DJI_0330_6c31e49d-8982-4b53-a242-cc055b3b4f1a.jpg" id="roadImage" alt="Road">
+</div>
+<input type="range" id="speedSlider" min="0" max="100" value="0">
+
+<script>
+document.getElementById('speedSlider').addEventListener('input', function(e) {
+    const speed = e.target.value;
+    const zoomLevel = 1 + speed / 100; // Adjust zoom level based on speed. "1" means no zoom.
+
+    // Update the scale of the image to simulate zooming
+    document.getElementById('roadImage').style.transform = `translate(-50%, -50%) scale(${zoomLevel})`;
+});
+</script>
+
+</body>
+</html>

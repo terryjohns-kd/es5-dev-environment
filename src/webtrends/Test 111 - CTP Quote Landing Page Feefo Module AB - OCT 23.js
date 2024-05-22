@@ -38,7 +38,7 @@ try {
     window.dataLayer.push({
         event: 'standard',
         eventCategory: 'error',
-        eventAction: 'optimize test - 111',
+        eventAction: 'webtrends optimize test 111',
         eventLabel: error,
         nonInteraction: true,
     });

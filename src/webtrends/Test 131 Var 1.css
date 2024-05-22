@@ -1,0 +1,60 @@
+#root>div>div>div>div:nth-child(4) {
+    display: none;
+}
+
+#root>div>div:nth-child(3)>div>div:nth-child(2)>div:nth-child(1) {
+    max-width: 100%;
+    flex-basis: 100%;
+}
+
+#root>div>div>div>div>div:nth-child(2)>h4 {
+    text-align: left;
+}
+
+.cro129-1 {
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    font-size: 1.5rem;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    flex-shrink: 0;
+    user-select: none;
+    margin-right: 7px;
+}
+
+.cro129-1a {
+    fill: currentColor;
+    display: inline-block;
+    font-size: 1.5rem;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    flex-shrink: 0;
+    user-select: none;
+    margin-right: -2px;
+}
+
+.cro129-2 {
+    margin-right: 7px;
+}
+
+.cro129-3 {
+    margin-left: 10px;
+}
+
+.cro129-4 {
+    color: #3b3d41;
+    font-size: 12px;
+    width: 310px;
+    margin-top: -5px;
+    margin-left: 11px;
+}
+
+@media (max-width: 599.95px) {
+    .cro129-3 {
+        margin-left: 30px;
+    }
+}
+
+#root>div>div>div>div>div:nth-child(4)>div>div>label:nth-child(4) {
+    margin-top: 0px;
+}

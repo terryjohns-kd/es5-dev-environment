@@ -19,7 +19,7 @@ try {
         window.dataLayer.push({
             event: 'standard',
             eventCategory: 'error',
-            eventAction: 'optimize optimal - 118 V2',
+            eventAction: 'optimize optimal - 118 Variant 2',
             eventLabel: error,
             nonInteraction: true,
         });

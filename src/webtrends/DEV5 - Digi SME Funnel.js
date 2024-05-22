@@ -11,7 +11,7 @@ WT.SPA.on('/au/quote/business/business-details', function() {
         window.dataLayer.push({
             event: 'standard',
             eventCategory: 'error',
-            eventAction: 'optimize demo - digi sme',
+            eventAction: 'webtrends optimize demo - digi sme',
             eventLabel: error,
             nonInteraction: true,
         });

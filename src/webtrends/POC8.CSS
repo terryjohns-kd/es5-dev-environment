@@ -1,0 +1,49 @@
+@media screen and (max-width: 767px) {
+    body ul li:first-child {
+        display: none !important;
+    }
+
+    .action-bar__text {
+        margin-right: 8px;
+    }
+
+    ul#actionbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .action-bar__dropdown-field {
+        display: none;
+    }
+
+    ul#actionbar li {
+        flex-basis: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        border-right: 1px solid #ccc;
+        padding-right: 10px;
+    }
+
+    ul#actionbar li:last-child,
+    ul#actionbar li:nth-child(3) {
+        border-right: none;
+    }
+
+    .action-bar__section.action-bar__icon {
+        display: block;
+    }
+
+    #actionbar>li>a>div.action-bar__section.action-bar__icon>svg {
+        width: 55px;
+    }
+
+    .action-bar__links--body ul.action-bar__with-header li:nth-child(2) {
+        border-top: none;
+    }
+}

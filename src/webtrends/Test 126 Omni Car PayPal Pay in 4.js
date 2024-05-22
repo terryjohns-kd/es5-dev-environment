@@ -1,4 +1,4 @@
-WT.SPA.on('/au/portal/quote/home.*#/payment/now', function () {
+WT.SPA.on('/au/portal/quote/vehicle.*#/payment/now', function () {
     // Initializes the dataLayer object if it does not already exist
     window.dataLayer = window.dataLayer || [];
     // This function retrieves a dataLayer value from a definded key, from the last object in the 'dataLayer' array that has this property
@@ -25,7 +25,6 @@ WT.SPA.on('/au/portal/quote/home.*#/payment/now', function () {
         document.head.appendChild(exJs);
         window.qbeTrack.meta.ppLoaded = true;
     }
-
     setTimeout(function () {
         try {
             // Select the target element
@@ -38,6 +37,7 @@ WT.SPA.on('/au/portal/quote/home.*#/payment/now', function () {
             var expTotalAnnualPremium = getDataLayerValue(window.dataLayer, 'totalAnnualPremium');
             // Run the code if the payment frequency is yearly
             if (expPaymentFrequency === 'annual_Ext' && expTotalAnnualPremium <= 2000) {
+
                 if (targetSpan) {
                     // Create a new span element
                     var newSpan = document.createElement('span');
@@ -62,13 +62,13 @@ WT.SPA.on('/au/portal/quote/home.*#/payment/now', function () {
                     targetElement.insertAdjacentHTML('afterend', htmlToAppend);
                 }
             }
-            WT.trackGA.dlPush('Test 122', 'Variation 1');
+            WT.trackGA.dlPush('Test 126', 'Variation 1');
         } catch (error) {
             // Logs any errors that occur to the 'dataLayer' object
             window.dataLayer.push({
                 event: 'standard',
                 eventCategory: 'error',
-                eventAction: 'webtrends optimize experiment 122 - omni',
+                eventAction: 'webtrends optimize experiment 126 - omni',
                 eventLabel: error,
                 nonInteraction: true,
             });

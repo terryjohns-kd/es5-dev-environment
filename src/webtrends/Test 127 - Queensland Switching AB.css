@@ -1,0 +1,32 @@
+@media (max-width: 992px) {
+    div[data-sc-field-key="833C1153D99F4B4A8AD986B3240359D5"] {
+        order: 2;
+    }
+
+    div[data-sc-field-key="4B498C19E6DA431BA818A2275FC1A653"] {
+        order: 1;
+    }
+
+    .c-banner__callout-box {
+        display: none;
+    }
+
+    .flex-container {
+        gap: 15px !important;
+    }
+
+    p.cro127-1 {
+        font-family: "Stag Medium", Verdana, Arial, serif, "Markerfield Regular";
+        font-size: 1.125rem;
+        font-stretch: normal;
+        font-weight: 500;
+        letter-spacing: normal;
+        line-height: 1.6;
+        width: 100%;
+        margin: 0;
+    }
+
+    p.cro127-2 {
+        margin: 0;
+    }
+}

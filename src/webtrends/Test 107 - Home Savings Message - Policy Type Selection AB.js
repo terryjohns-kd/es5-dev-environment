@@ -68,7 +68,7 @@ WT.SPA.on('/au/portal/quote/home.*#/product-selection', function() {
         window.dataLayer.push({
             event: 'standard',
             eventCategory: 'error',
-            eventAction: 'optimize test 107 - omni',
+            eventAction: 'optimize test 107 - Omni',
             eventLabel: error,
             nonInteraction: true,
         });

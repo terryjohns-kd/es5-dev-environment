@@ -11,7 +11,7 @@ WT.SPA.on('/au/portal/quote/(vehicle|home|landlord)', function() {
         window.dataLayer.push({
             event: 'standard',
             eventCategory: 'error',
-            eventAction: 'optimize demo - omni',
+            eventAction: 'optimize demo - Omni',
             eventLabel: error,
             nonInteraction: true,
         });

@@ -113,7 +113,7 @@ try {
     window.dataLayer.push({
         event: 'standard',
         eventCategory: 'error',
-        eventAction: 'Google Optimize Test 99',
+        eventAction: 'webtrends optimize test 99',
         eventLabel: error,
         nonInteraction: true,
     });

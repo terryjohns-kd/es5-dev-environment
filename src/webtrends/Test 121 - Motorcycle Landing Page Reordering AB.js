@@ -20,7 +20,7 @@ try {
     window.dataLayer.push({
         event: 'standard',
         eventCategory: 'error',
-        eventAction: 'Webtrends Optimize Test 121',
+        eventAction: 'webtrends optimize test 121',
         eventLabel: error,
         nonInteraction: true,
     });

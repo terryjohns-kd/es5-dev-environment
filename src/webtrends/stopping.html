@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopping Distance Visualizer</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="chartContainer" style="width: 800px; height: 300px;">
+        <canvas id="stoppingChart"></canvas>
+    </div>
+    <div>
+        <p>Use the slider to visualise the stopping dtances for an average family car in both wet and dry conditions.
+        </p>
+        <label for="speedSlider">Speed (km/h):</label>
+        <input type="range" id="speedSlider" min="40" max="110" value="40" step="10" oninput="updateChart()">
+        <span id="speedDisplay">40</span> km/h
+    </div>
+    <script>
+        // Pre-load the car image
+        var carImage = new Image();
+        carImage.src = 'https://q-jumper.com/redcar.png'; // URL to the car image, ensure this is defined at the top of your script
+        var stoppingDistancePlugin = {
+            id: 'stoppingDistancePlugin',
+            afterDatasetsDraw: function (chart) {
+                var ctx = chart.ctx;
+                ctx.font = "16px Arial";
+                var padding = 8; // Padding around text for background rectangle
+                var textHeight = parseInt(ctx.font, 10); // Approximate text height
+                var verticalAdjustment = -8; // Adjust this to move the background up
+
+                chart.data.datasets.forEach(function (dataset, i) {
+                    var meta = chart.getDatasetMeta(i);
+                    if (!meta.hidden) {
+                        meta.data.forEach(function (element, index) {
+                            var dataValue = dataset.data[index];
+                            if (dataValue > 0) {
+                                var dataString = dataValue.toString() + "m";
+                                var textWidth = ctx.measureText(dataString).width;
+                                var posX = element.tooltipPosition().x - textWidth / 2 - padding / 2;
+                                var posY = element.tooltipPosition().y - 25; // Base Y position for text
+
+                                // Adjust only the rectangle's Y position to move it up
+                                var rectY = posY - textHeight - padding / 2 - verticalAdjustment;
+
+                                // Draw opaque black background rectangle slightly above the text
+                                ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+                                ctx.fillRect(posX, rectY, textWidth + padding, textHeight + padding);
+
+                                // Text color and positioning
+                                ctx.fillStyle = "#fff"; // White text color
+                                ctx.fillText(dataString, posX + padding / 2, posY);
+                            }
+                        });
+                    }
+                });
+            }
+        };
+        var carImagePlugin = {
+            id: 'carImagePlugin',
+            afterDatasetsDraw: function (chart) {
+                var ctx = chart.ctx;
+                // Directly draw the image if it's already loaded
+                if (carImage.complete && carImage.naturalHeight !== 0) {
+                    chart.data.datasets.forEach(function (dataset, i) {
+                        // Only draw car image for braking distances datasets
+                        if (dataset.label === 'Braking Distance on Dry Road' || dataset.label === 'Braking Distance on Wet Road') {
+                            var meta = chart.getDatasetMeta(i);
+                            if (!meta.hidden) {
+                                meta.data.forEach(function (element, index) {
+                                    // Adjust the condition to ensure the image is only drawn once per dataset
+                                    if (index === 0 && dataset.label === 'Braking Distance on Dry Road' || index === 1 && dataset.label === 'Braking Distance on Wet Road') {
+                                        var posX = element.tooltipPosition().x - carImage.width / 20; // Adjust position as needed
+                                        var posY = element.tooltipPosition().y - carImage.height / 6; // Center the image vertically on the bar
+                                        ctx.drawImage(carImage, posX, posY, carImage.width / 3, carImage.height / 3); // Adjust size as needed
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+        };
+
+        var stoppingDistances = [
+            { speed: 40, reaction: 17, brakingDry: 9, brakingWet: 13 },
+            { speed: 50, reaction: 21, brakingDry: 14, brakingWet: 20 },
+            { speed: 60, reaction: 25, brakingDry: 20, brakingWet: 29 },
+            { speed: 70, reaction: 29, brakingDry: 27, brakingWet: 40 },
+            { speed: 80, reaction: 33, brakingDry: 36, brakingWet: 52 },
+            { speed: 90, reaction: 38, brakingDry: 45, brakingWet: 65 },
+            { speed: 100, reaction: 42, brakingDry: 56, brakingWet: 80 },
+            { speed: 110, reaction: 46, brakingDry: 67, brakingWet: 97 }
+        ];
+
+        var backgroundImageUrl = 'file:///C:/Users/Terry/Downloads/road.png';
+        var background = new Image();
+        background.src = backgroundImageUrl;
+
+        var myChart; // Declare the chart variable outside to be accessible by updateChart function
+
+        function updateChart() {
+            var sliderValue = document.getElementById('speedSlider').value;
+            document.getElementById('speedDisplay').textContent = sliderValue + ' km/h';
+
+            var currentData = stoppingDistances.filter(function (d) {
+                return d.speed === parseInt(sliderValue, 10);
+            })[0];
+            if (currentData) {
+                myChart.data.datasets[0].data = [currentData.reaction, currentData.reaction];
+                myChart.data.datasets[1].data = [currentData.brakingDry, 0];
+                myChart.data.datasets[2].data = [0, currentData.brakingWet];
+                myChart.update();
+            }
+        }
+
+        // Wait for the background image to load before creating the chart
+        background.onload = function () {
+            var ctx = document.getElementById('stoppingChart').getContext('2d');
+            myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Dry Road', 'Wet Road'],
+                    datasets: [
+                        {
+                            label: 'Reaction Distance',
+                            data: [17, 17], // Initialize with first set of data
+                            backgroundColor: 'rgba(0, 0, 255, 0.5)',
+                            barPercentage: 0.3, // Adjust these values
+                            categoryPercentage: 0.3 // Adjust these values
+                        },
+                        {
+                            label: 'Braking Distance on Dry Road',
+                            data: [9, 0], // Initialize with first set of data
+                            backgroundColor: 'rgba(255, 165, 0, 0.5)',
+                            barPercentage: 0.3, // Adjust these values
+                            categoryPercentage: 0.3 // Adjust these values
+                        },
+                        {
+                            label: 'Braking Distance on Wet Road',
+                            data: [0, 13], // Initialize with first set of data
+                            backgroundColor: 'rgba(255, 0, 0, 0.5)',
+                            barPercentage: 0.3, // Adjust these values
+                            categoryPercentage: 0.3 // Adjust these values
+                        }
+                    ]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            stacked: true,
+                            max: 150 // Set the maximum value of the scale to 150 meters
+                        },
+                        y: {
+                            stacked: true
+                        }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true
+                        },
+                        title: {
+                            display: true,
+                            text: 'Car Stopping Distances by Speed'
+                        }
+                    }
+                },
+                plugins: [{
+                    id: 'backgroundPlugin',
+                    beforeDraw: function (chart) {
+                        var ctx = chart.ctx;
+                        var chartArea = chart.chartArea;
+                        ctx.drawImage(background, chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+                    }
+                }, carImagePlugin, stoppingDistancePlugin]
+            });
+
+            updateChart(); // Initial chart update
+        };
+
+        document.getElementById('speedSlider').addEventListener('input', updateChart);
+
+        // In case the image is cached and the onload event does not fire
+        if (background.complete) {
+            background.onload();
+        }
+    </script>
+
+</body>
+
+</html>

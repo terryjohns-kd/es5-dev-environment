@@ -17,7 +17,7 @@ try {
         window.dataLayer.push({
             event: 'standard',
             eventCategory: 'error',
-            eventAction: 'optimize test - 118 V2',
+            eventAction: 'optimize test - 118 Variant 2',
             eventLabel: error,
             nonInteraction: true,
         });

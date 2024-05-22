@@ -1,6 +1,6 @@
 (function(){
     function getParts(url){
-        // handle full URLs or ones that start from a pathname.
+        // handle full URLs or ones that start from a pathname
         
         var o = {params: {}};
         
