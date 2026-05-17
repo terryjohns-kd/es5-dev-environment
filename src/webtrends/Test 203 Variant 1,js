@@ -1,0 +1,12 @@
+WT.SPA.run({
+    vpv: '/au/car-insurance/comprehensive-car-insurance',
+    test: 'Test 203',
+    variant: 'Variant 1',
+    callback: function () {
+        var ctas = document.querySelectorAll('#above-content .q-blueboxHeroBanner__ctas a');
+
+        for (var i = 0; i < ctas.length; i++) {
+            ctas[i].textContent = 'Get a quote online and save $75*';
+        }
+    }
+});

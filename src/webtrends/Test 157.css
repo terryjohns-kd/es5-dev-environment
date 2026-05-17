@@ -1,0 +1,45 @@
+.T157-3 {
+    display: flex;
+    justify-content: space-between;
+    /* Optional, adds spacing between columns */
+    gap: 20px;
+    /* Adds consistent spacing between columns */
+}
+
+.T157-4 {
+    flex: 1;
+    /* Makes all columns equal width */
+    text-align: center;
+    /* Optional, centers the text inside each column */
+    padding: 20px 20px 15px 20px;
+    background-color: #f8f8f8;
+    border-top: 10px solid #0099e6;
+}
+
+.T157-2 {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.T157-2>h2 {
+    color: #000;
+    font-family: Stag Medium;
+    letter-spacing: 0em;
+}
+
+@media (max-width: 765px) {
+    .T157-3 {
+        flex-direction: column;
+        /* Switches to a vertical layout */
+        gap: 0px;
+        /* Adjust spacing for rows */
+        margin-bottom: 20px
+    }
+
+    .T157-4 {
+        flex: none;
+        /* Resets flex properties for individual items */
+        width: 100%;
+        /* Ensures each item takes up the full width */
+    }
+}

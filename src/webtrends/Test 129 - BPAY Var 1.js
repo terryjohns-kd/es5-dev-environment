@@ -39,5 +39,3 @@ WT.SPA.on('/au/portal/quote/home.*#/payment/now', function () {
         });
     }
 });
-
-

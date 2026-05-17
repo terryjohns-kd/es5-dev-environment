@@ -17,7 +17,7 @@ try {
     } catch (error) {
         // Logs any errors that occur to the 'dataLayer' object
         window.dataLayer.push({
-            event: 'standard',
+            event: 'standard',hn
             eventCategory: 'error',
             eventAction: 'optimize optimal - 118 Variant 2',
             eventLabel: error,

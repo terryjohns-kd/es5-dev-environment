@@ -1,0 +1,59 @@
+.cro129-1 {
+    width: 30px;
+}
+
+.cro129-3 {
+    display: block;
+    width: 100%;
+    margin: 30px 0 20px 0;
+}
+
+svg.cro129-1 {
+    margin-right: 10px;
+}
+
+svg.cro129-1c {
+    margin-right: 5px;
+}
+
+svg.cro129-1b {
+    margin-right: 7px;
+}
+
+.MuiSvgIcon-root-1802 {
+    font-size: 40px;
+    fill: currentColor;
+    width: 2em;
+    height: 2em;
+    display: inline-block;
+    font-size: 1.5rem;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.jss2025 {
+    margin: 0;
+    padding: 0;
+    justify-self: start;
+    list-style-type: none;
+    margin-left: 0px !important;
+}
+
+.jss2025 li {
+    display: inline;
+}
+
+@media only screen and (max-width: 600px) {
+    .MuiSvgIcon-root-1802 {
+        margin-right: -1px;
+        width: 1.9em;
+        height: 1.9em;
+    }
+}
+
+@media only screen and (max-width: 388px) {
+    .MuiSvgIcon-root-1802 {
+        margin-right: -3px;
+    }
+}

@@ -1,4 +1,4 @@
-WT.SPA.on('/au/portal/quote/home.*#/payment/now', function () {
+WT.SPA.on('/au/portal/quote/vehicle.*#/payment/now', function () {
     window.dataLayer = window.dataLayer || [];
 
     function getDataLayerValue(dataLayer, key) {
@@ -87,12 +87,12 @@ WT.SPA.on('/au/portal/quote/home.*#/payment/now', function () {
             }
         }
 
-        WT.trackGA.dlPush('Test 129', 'Variation 2');
+        WT.trackGA.dlPush('Test 131', 'Variation 2');
     } catch (error) {
         window.dataLayer.push({
             event: 'standard',
             eventCategory: 'error',
-            eventAction: 'webtrends optimize experiment 129 - omni',
+            eventAction: 'webtrends optimize experiment 131 - omni',
             eventLabel: error,
             nonInteraction: true,
         });
