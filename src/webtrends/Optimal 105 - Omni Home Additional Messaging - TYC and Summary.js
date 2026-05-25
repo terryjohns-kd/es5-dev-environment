@@ -1,4 +1,27 @@
-WT.SPA.on('/au/portal/quote/home.*#/tailorCover', function() {
+function hasBlockedPromoCode() {
+    var query = window.location.search || '';
+
+    // List of promo codes that should STOP the experiment
+    var blocked = [
+        'VFFLAUNCHPOINTS',
+        'KWILHOME'
+    ];
+
+    for (var i = 0; i < blocked.length; i++) {
+        if (query.indexOf('promotionalCode=' + blocked[i]) !== -1) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+WT.SPA.on('/au/portal/quote/home.*#?/tailorCover', function () {
+
+    if (hasBlockedPromoCode()) {
+        return;
+    }
+
     // Initializes the dataLayer object if it does not already exist
     window.dataLayer = window.dataLayer || [];
     // This function retrieves a dataLayer value from a defined key, from the last object in the 'dataLayer' array that has this property
@@ -17,14 +40,14 @@ WT.SPA.on('/au/portal/quote/home.*#/tailorCover', function() {
         if (expCoverType === 'building_and_contents' && document.querySelectorAll('.cro1').length === 0) {
             // Select the first and second li elements
             var firstLi = document.querySelector('#tailorCover > div > div:nth-child(1) > div > div > ul > li:nth-child(1)');
-            var secondLi = document.querySelector('#tailorCover > div > div:nth-child(1) > div > div > ul > li:nth-child(2)');
+            //var secondLi = document.querySelector('#tailorCover > div > div:nth-child(1) > div > div > ul > li:nth-child(2)');
             // Set their display property to "none"
             if (firstLi) {
                 firstLi.style.display = 'none';
             }
-            if (secondLi) {
-                secondLi.style.display = 'none';
-            }
+            //if (secondLi) {
+            //    secondLi.style.display = 'none';
+            //}
             // Create the new HTML element
             var newElement = document.createElement('div');
             newElement.className = 'cro1';
@@ -36,12 +59,10 @@ WT.SPA.on('/au/portal/quote/home.*#/tailorCover', function() {
         } else if (document.querySelectorAll('.cro1').length === 0) {
             // Code to execute when expCoverType is for a single product
             // Select the first  li element
-            var sfirstLi = document.querySelector('#tailorCover > div > div:nth-child(1) > div > div > ul > li:nth-child(1)');
             // Set their display property to "none"
-            if (sfirstLi) {
-                sfirstLi.style.display = 'none';
-            }
-            // Create the new HTML element
+            //if (sfirstLi) {
+            //    sfirstLi.style.display = 'none';
+            //}
             var snewElement = document.createElement('div');
             snewElement.className = 'cro1';
             snewElement.innerHTML = '<div class="cro2"><p class="cro3">The following discounts have been applied:</p><p class="cro5"><ul class="cro5"><li>10% online discount for a new insurance policy</li></ul></p></div>';
@@ -61,7 +82,12 @@ WT.SPA.on('/au/portal/quote/home.*#/tailorCover', function() {
         });
     }
 });
-WT.SPA.on('/au/portal/quote/home.*#/summary', function() {
+WT.SPA.on('/au/portal/quote/home.*(#)?/summary', function () {
+
+    if (hasBlockedPromoCode()) {
+        return;
+    }
+
     // Initializes the dataLayer object if it does not already exist
     window.dataLayer = window.dataLayer || [];
     // This function retrieves a dataLayer value from a defined key, from the last object in the 'dataLayer' array that has this property
