@@ -1,0 +1,184 @@
+<section class="hf-wizard-promo">
+    <div class="hf-card">
+        <div class="hf-icon">
+            <span>⌂</span>
+        </div>
+
+        <div class="hf-copy">
+            <p class="hf-kicker">Not sure where to start?</p>
+            <h2>Find your perfect home in under 2 minutes.</h2>
+            <p>
+                Answer a few quick questions and we’ll recommend home designs that match
+                your lifestyle, budget and block.
+            </p>
+        </div>
+
+        <div class="hf-benefits">
+            <div><span class="hf-check">✓</span> Matches your budget</div>
+            <div><span class="hf-check">✓</span> Fits your block</div>
+            <div><span class="hf-check">✓</span> Personalised recommendations</div>
+            <div class="hf-time">◷ Takes less than 2 minutes</div>
+        </div>
+
+        <div class="hf-media">
+            <img src="https://cdn.simonds.com.au/cms/images/homefinder-wizard.png" alt="Modern Simonds living room">
+            <a href="/home-finder-wizard" class="hf-button">
+                Start Home Finder
+            </a>
+        </div>
+    </div>
+</section>
+<style>
+    .hf-wizard-promo {
+        max-width: 1440px;
+        margin: 28px auto 26px;
+        padding: 0 76px;
+        font-family: inherit;
+    }
+
+    .hf-card {
+        display: grid;
+        grid-template-columns: 64px 1.35fr 1fr 320px;
+        gap: 28px;
+        align-items: center;
+        padding: 26px 28px;
+        border: 1px solid #e6e6e6;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #fff 0%, #fff 58%, #fff5f6 100%);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, .07);
+    }
+
+    .hf-icon {
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: #fde1e6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #e7193f;
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    .hf-kicker {
+        margin: 0 0 8px;
+        font-size: 16px;
+        font-weight: 700;
+        color: #333;
+    }
+
+    .hf-copy h2 {
+        margin: 0 0 16px;
+        font-size: 30px;
+        line-height: 1.15;
+        font-weight: 700;
+        color: #242424;
+    }
+
+    .hf-copy p:last-child {
+        margin: 0;
+        max-width: 460px;
+        font-size: 15px;
+        line-height: 1.55;
+        color: #333;
+    }
+
+    .hf-benefits {
+        padding-left: 28px;
+        border-left: 1px solid #f1b9c3;
+        display: grid;
+        gap: 14px;
+        font-size: 15px;
+        color: #333;
+    }
+
+    .hf-benefits div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .hf-check {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        min-width: 22px;
+        border: 1px solid #ed1740;
+        border-radius: 50%;
+        color: #ed1740;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .hf-time {
+        margin-top: 12px;
+        color: #222;
+    }
+
+    .hf-media img {
+        width: 100%;
+        height: 138px;
+        object-fit: cover;
+        border-radius: 10px;
+        display: block;
+        margin-bottom: 14px;
+    }
+
+    .hf-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        width: 100%;
+        min-height: 48px;
+        border-radius: 999px;
+        background: #ed1740;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        transition: transform .2s ease, background .2s ease;
+    }
+
+    .hf-button:hover,
+    .hf-button:focus {
+        background: #d81338;
+        transform: translateY(-1px);
+    }
+
+    @media (max-width: 900px) {
+        .hf-wizard-promo {
+            margin: 24px auto;
+            padding: 0 16px;
+        }
+
+        .hf-card {
+            grid-template-columns: 1fr;
+            gap: 18px;
+            padding: 24px;
+        }
+
+        .hf-icon {
+            width: 54px;
+            height: 54px;
+        }
+
+        .hf-copy h2 {
+            font-size: 28px;
+        }
+
+        .hf-benefits {
+            border-left: 0;
+            border-top: 1px solid #f1b9c3;
+            padding-left: 0;
+            padding-top: 18px;
+        }
+
+        .hf-media img {
+            height: 150px;
+        }
+    }
+</style>
